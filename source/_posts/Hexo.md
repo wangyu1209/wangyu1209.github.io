@@ -2,7 +2,6 @@
 title: Hexo部署
 copyrighr: true
 date: 2024-02-09 10:14:39
-cover: https://img.myhappiness.top/img/Hexo.jpg
 tags:
     - Linux
     - Centos

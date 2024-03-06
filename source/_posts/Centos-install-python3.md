@@ -2,7 +2,6 @@
 title: Centos安装python3
 copyrighr: true
 date: 2024-02-19 20:53:39
-cover: https://img.myhappiness.top/img/Python.jpg
 tags:
     - Python
     - Linux
