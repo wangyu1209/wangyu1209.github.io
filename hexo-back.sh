@@ -10,4 +10,5 @@ git push -u gitee hexo:master
 if [ $? = 0 ]; then
      echo "备份成功"
 else
-     echo "备份失败”
+     echo "备份失败"
+fi
