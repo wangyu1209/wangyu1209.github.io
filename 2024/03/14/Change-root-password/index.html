@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Centos7破解root密码 | 12零9</title><meta name="author" content="Mr wang"><meta name="copyright" content="Mr wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Centos7破解root密码 使用LiveCD进入救援模式修改root密码 使用单用户模式重置密码  使用LiveCD进入救援模式修改root密码1.挂载iso镜像，设置CD&#x2F;DVD启动 2.进入系统引导界面选择故障排除选项  3.选择第二个选项救援系统 该界面翻译如下：  在基本图形模式下安装 Cent0S 7  拯救 Cent0S 系统  运行内存测试  从本地硬盘启动  返回主菜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7破解root密码">
+<meta property="og:url" content="https://blog.myhappiness.top/2024/03/14/Change-root-password/index.html">
+<meta property="og:site_name" content="12零9">
+<meta property="og:description" content="Centos7破解root密码 使用LiveCD进入救援模式修改root密码 使用单用户模式重置密码  使用LiveCD进入救援模式修改root密码1.挂载iso镜像，设置CD&#x2F;DVD启动 2.进入系统引导界面选择故障排除选项  3.选择第二个选项救援系统 该界面翻译如下：  在基本图形模式下安装 Cent0S 7  拯救 Cent0S 系统  运行内存测试  从本地硬盘启动  返回主菜">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.myhappiness.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-03-13T18:34:16.000Z">
+<meta property="article:modified_time" content="2024-03-13T18:40:57.193Z">
+<meta property="article:author" content="Mr wang">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.myhappiness.top/img/avatar.jpg"><link rel="shortcut icon" href="https://img.myhappiness.top/img/favicon.png"><link rel="canonical" href="https://blog.myhappiness.top/2024/03/14/Change-root-password/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Centos7破解root密码',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-14 02:40:57'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img.myhappiness.top/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="12零9"><span class="site-name">12零9</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Centos7破解root密码</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-13T18:34:16.000Z" title="发表于 2024-03-14 02:34:16">2024-03-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-13T18:40:57.193Z" title="更新于 2024-03-14 02:40:57">2024-03-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Centos7破解root密码"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Centos7破解root密码"><a href="#Centos7破解root密码" class="headerlink" title="Centos7破解root密码"></a>Centos7破解root密码</h1><ul>
+<li>使用LiveCD进入救援模式修改root密码</li>
+<li>使用单用户模式重置密码</li>
+</ul>
+<h2 id="使用LiveCD进入救援模式修改root密码"><a href="#使用LiveCD进入救援模式修改root密码" class="headerlink" title="使用LiveCD进入救援模式修改root密码"></a>使用LiveCD进入救援模式修改root密码</h2><p>1.挂载iso镜像，设置CD&#x2F;DVD启动</p>
+<p>2.进入系统引导界面选择故障排除选项</p>
+<p><img src="https://img.myhappiness.top/img/image-20240314153853059.png" alt="image-20240314153853059"></p>
+<p>3.选择第二个选项救援系统</p>
+<p>该界面翻译如下：</p>
+<ul>
+<li><p>在基本图形模式下安装 Cent0S 7</p>
+</li>
+<li><p>拯救 Cent0S 系统</p>
+</li>
+<li><p>运行内存测试</p>
+</li>
+<li><p>从本地硬盘启动</p>
+</li>
+<li><p>返回主菜单 &lt;</p>
+</li>
+<li><p>按 Tab 键查看菜单项的全部配置选项<br>如果系统无法启动，您可以通过它访问文件<br>并编辑配置文件，尝试重新启动。</p>
+</li>
+</ul>
+<p><img src="https://img.myhappiness.top/img/image-20240314154146844.png" alt="image-20240314154146844"></p>
+<p>4.进入如下界面时选择1</p>
+<p><img src="https://img.myhappiness.top/img/image-20240314154637870.png" alt="image-20240314154637870"></p>
+<p>按下回车键，进入shell</p>
+<p><img src="https://img.myhappiness.top/img/image-20240314155259975.png" alt="image-20240314155259975"></p>
+<p>进入shell后执行命令修改root密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chroot /mnt/sysimage</span><br><span class="line">passwd root</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.myhappiness.top/img/image-20240314155010902.png" alt="image-20240314155010902"></p>
+<p>退出shell，将自动重新启动系统，密码修改完成（注意重启后取消挂载镜像）</p>
+<p><img src="https://img.myhappiness.top/img/image-20240314155908550.png" alt="image-20240314155908550"></p>
+<h2 id="使用单用户模式重置密码"><a href="#使用单用户模式重置密码" class="headerlink" title="使用单用户模式重置密码"></a>使用单用户模式重置密码</h2><p>1.重启系统，在出现内核选择界面时，按键盘上下方向键，进入如下图所示界面，选择第一项，按e键盘进行编辑</p>
+<p><img src="https://img.myhappiness.top/img/image-20240314144449565.png" alt="image-20240314144449565"></p>
+<p>2.编辑内核界面找到ro这一行，修改为 rw init&#x3D;&#x2F;sysroot&#x2F;bin&#x2F;sh</p>
+<p><img src="https://img.myhappiness.top/img/image-20240314145159278.png" alt="image-20240314145159278"></p>
+<p>3.按Ctrl+x进入如下图所示的救援模式</p>
+<p>原理：启动一个shell环境，系统并没有真正启动</p>
+<p><img src="https://img.myhappiness.top/img/image-20240314145648557.png" alt="image-20240314145648557"></p>
+<p>4.更改目录并更改密码</p>
+<p>chroot命令用来在指定的根目录下运行指令</p>
+<p>chroot即 change root directory(更改根目录)。在Linux系统中，系统默认的目录结构都是以”&#x2F;“(根目录)开始的，在使用chroot命令后，系统的目录结构以指定的位置作为根目录。</p>
+<p>在使用chroot命令后，系统读取到的目录和文件将不在是旧系统根目录下的，而是新根目录下的目录和文件。</p>
+<p>使用以下命令进行更改root密码操作</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chroot /sysroot</span><br><span class="line">passwd root</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.myhappiness.top/img/image-20240314151058433.png" alt="image-20240314151058433"></p>
+<p><strong>注意：</strong></p>
+<p>如果系统开启了Selinux则需要执行命令touch .&#x2F;autorelabel 以更新系统信息，否则重启系统更改的密码不会生效。</p>
+<p>修改完密码后需要退出当前根目录，然后重启系统。</p>
+<p><img src="https://img.myhappiness.top/img/image-20240314151539518.png" alt="image-20240314151539518"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.myhappiness.top">Mr wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.myhappiness.top/2024/03/14/Change-root-password/">https://blog.myhappiness.top/2024/03/14/Change-root-password/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.myhappiness.top" target="_blank">12零9</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://img.myhappiness.top/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/03/07/confluence-Backup-and-Recovery/" title="Confluence备份恢复"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Confluence备份恢复</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/19/Centos-install-python3/" title="Centos安装python3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-19</div><div class="title">Centos安装python3</div></div></a></div><div><a href="/2024/02/22/confluence-install/" title="Confluence安装部署"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-22</div><div class="title">Confluence安装部署</div></div></a></div><div><a href="/2024/02/09/Hexo/" title="Hexo部署"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-09</div><div class="title">Hexo部署</div></div></a></div><div><a href="/2024/03/07/change-confluence-admin-password/" title="重置Confluence管理员密码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-07</div><div class="title">重置Confluence管理员密码</div></div></a></div><div><a href="/2024/03/07/confluence-Backup-and-Recovery/" title="Confluence备份恢复"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-07</div><div class="title">Confluence备份恢复</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://img.myhappiness.top/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr wang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Centos7%E7%A0%B4%E8%A7%A3root%E5%AF%86%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">Centos7破解root密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8LiveCD%E8%BF%9B%E5%85%A5%E6%95%91%E6%8F%B4%E6%A8%A1%E5%BC%8F%E4%BF%AE%E6%94%B9root%E5%AF%86%E7%A0%81"><span class="toc-number">1.1.</span> <span class="toc-text">使用LiveCD进入救援模式修改root密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%95%E7%94%A8%E6%88%B7%E6%A8%A1%E5%BC%8F%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">使用单用户模式重置密码</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/14/Change-root-password/" title="Centos7破解root密码">Centos7破解root密码</a><time datetime="2024-03-13T18:34:16.000Z" title="发表于 2024-03-14 02:34:16">2024-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/07/confluence-Backup-and-Recovery/" title="Confluence备份恢复">Confluence备份恢复</a><time datetime="2024-03-06T19:32:13.000Z" title="发表于 2024-03-07 03:32:13">2024-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/07/change-confluence-admin-password/" title="重置Confluence管理员密码">重置Confluence管理员密码</a><time datetime="2024-03-06T19:26:05.000Z" title="发表于 2024-03-07 03:26:05">2024-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/22/confluence-install/" title="Confluence安装部署">Confluence安装部署</a><time datetime="2024-02-22T09:09:15.000Z" title="发表于 2024-02-22 17:09:15">2024-02-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/19/Centos-install-python3/" title="Centos安装python3">Centos安装python3</a><time datetime="2024-02-19T12:53:39.000Z" title="发表于 2024-02-19 20:53:39">2024-02-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Mr wang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
