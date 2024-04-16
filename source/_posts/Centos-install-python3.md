@@ -1,6 +1,7 @@
 ---
 title: Centos安装python3
 copyrighr: true
+hide: true
 date: 2024-02-19 20:53:39
 tags:
     - Python

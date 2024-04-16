@@ -6,7 +6,6 @@ tags:
     - Linux
     - Centos
 categories:
-    - Linux
     - 常用服务安装
 ---
 # 本地环境搭建
