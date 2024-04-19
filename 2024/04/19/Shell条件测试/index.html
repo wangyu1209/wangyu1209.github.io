@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Shell条件测试 | 12零9</title><meta name="author" content="Mr wang"><meta name="copyright" content="Mr wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Shell条件测试在Shell脚本中，条件测试可以使用三种格式：  格式1：使用test命令。test命令允许您在Shell脚本中测试条件。例如：  if test $a -eq $b; then    echo &quot;a 等于 b&quot;else    echo &quot;a 不等于 b&quot;fi   格式2：使用方括号[]。方括号是test命令的等效符号。例如：  if [">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell条件测试">
+<meta property="og:url" content="https://blog.myhappiness.top/2024/04/19/Shell%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="12零9">
+<meta property="og:description" content="Shell条件测试在Shell脚本中，条件测试可以使用三种格式：  格式1：使用test命令。test命令允许您在Shell脚本中测试条件。例如：  if test $a -eq $b; then    echo &quot;a 等于 b&quot;else    echo &quot;a 不等于 b&quot;fi   格式2：使用方括号[]。方括号是test命令的等效符号。例如：  if [">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.myhappiness.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-04-19T07:02:30.000Z">
+<meta property="article:modified_time" content="2024-04-19T07:03:03.913Z">
+<meta property="article:author" content="Mr wang">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.myhappiness.top/img/avatar.jpg"><link rel="shortcut icon" href="https://img.myhappiness.top/img/favicon.png"><link rel="canonical" href="https://blog.myhappiness.top/2024/04/19/Shell%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Shell条件测试',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-19 15:03:03'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img.myhappiness.top/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="12零9"><span class="site-name">12零9</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Shell条件测试</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-19T07:02:30.000Z" title="发表于 2024-04-19 15:02:30">2024-04-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-19T07:03:03.913Z" title="更新于 2024-04-19 15:03:03">2024-04-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Shell/">Shell</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Shell条件测试"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Shell条件测试"><a href="#Shell条件测试" class="headerlink" title="Shell条件测试"></a>Shell条件测试</h2><p>在Shell脚本中，条件测试可以使用三种格式：</p>
+<ol>
+<li><strong>格式1</strong>：使用<code>test</code>命令。<code>test</code>命令允许您在Shell脚本中测试条件。例如：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> <span class="variable">$a</span> -eq <span class="variable">$b</span>; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 等于 b&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不等于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>格式2</strong>：使用方括号<code>[]</code>。方括号是<code>test</code>命令的等效符号。例如：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> -eq <span class="variable">$b</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 等于 b&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不等于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>格式3</strong>：使用双方括号<code>[[]]</code>。<code>[[]]</code>提供了更多的功能，比如模式匹配和正则表达式匹配，而不是仅仅测试变量是否存在或是否为空。例如：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [[ <span class="variable">$a</span> -eq <span class="variable">$b</span> ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 等于 b&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不等于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="文件比较"><a href="#文件比较" class="headerlink" title="文件比较"></a>文件比较</h2><ul>
+<li><p><code>-e file</code>: 检查文件是否存在。</p>
+</li>
+<li><p><code>-f file</code>: 检查文件是否是一个常规文件。</p>
+</li>
+<li><p><code>-d file</code>: 检查文件是否是一个目录。</p>
+</li>
+<li><p><code>-s file</code>: 检查文件是否非空。</p>
+</li>
+<li><p><code>-r file</code>: 检查文件是否可读。</p>
+</li>
+<li><p><code>-w file</code>: 检查文件是否可写。</p>
+</li>
+<li><p><code>-x file</code>: 检查文件是否可执行</p>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<p>文件测试条件是Shell脚本中常用的一种方式，用于检查文件的各种属性。以下是一些常见的文件测试条件及其用法：</p>
+<ol>
+<li><p><strong>文件是否存在 (<code>-e</code>)：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -e <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;File exists.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>文件是否是一个常规文件 (<code>-f</code>)：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -f <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;File is a regular file.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>文件是否是一个目录 (<code>-d</code>)：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -d <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;File is a directory.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>文件是否非空 (<code>-s</code>)：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -s <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;File is not empty.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>文件是否可读 (<code>-r</code>)：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -r <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;File is readable.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>文件是否可写 (<code>-w</code>)：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -w <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;File is writable.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>文件是否可执行 (<code>-x</code>)：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;File is executable.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="数值比较"><a href="#数值比较" class="headerlink" title="数值比较"></a>数值比较</h2><ul>
+<li>等于：<code>-eq</code>（equal）</li>
+<li>不等于：<code>-ne</code>（not equal）</li>
+<li>大于：<code>-gt</code>（greater than）</li>
+<li>小于：<code>-lt</code>（less than）</li>
+<li>大于等于：<code>-ge</code>（greater than or equal to）</li>
+<li>小于等于：<code>-le</code>（less than or equal to）</li>
+</ul>
+<p><strong>示例脚本：</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">value1=10</span><br><span class="line">value2=11</span><br><span class="line"></span><br><span class="line">if [ $value1 -gt $value2 ]</span><br><span class="line">then</span><br><span class="line">	echo &quot;The test value $value1 is greater than $value2&quot;</span><br><span class="line">else</span><br><span class="line">	echo &quot;The test value $value1 is less than $value2&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ $value1 -eq $value2 ]</span><br><span class="line">then</span><br><span class="line">	echo &quot;The values are equal&quot;</span><br><span class="line">else</span><br><span class="line">	echo &quot;The values are different&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h2><ul>
+<li><code>str1 = str2 </code> :  检查str1是否和str2相同</li>
+<li><code>str1 != str2</code> :  检查str1是否和str2不同</li>
+<li><code>str1 &lt; str2 </code> :  检查str1是否小于str2</li>
+<li><code>str1 &gt; str2</code> :  检查str1是否大于str2</li>
+<li><code>-n str1</code> :  检查str1的长度是否不为0</li>
+<li><code>-z str1 </code> :  检查str1是否为0</li>
+</ul>
+<p><strong>示例脚本：</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">定义两个字符串变量</span></span><br><span class="line">str1=&quot;Hello&quot;</span><br><span class="line">str2=&quot;World&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">比较两个字符串是否相等</span></span><br><span class="line">if [ &quot;$str1&quot; = &quot;$str2&quot; ]; then</span><br><span class="line">    echo &quot;字符串相等&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;字符串不相等&quot;</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">比较两个字符串是否不相等</span></span><br><span class="line">if [ &quot;$str1&quot; != &quot;$str2&quot; ]; then</span><br><span class="line">    echo &quot;字符串不相等&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;字符串相等&quot;</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">比较字符串的长度是否相等</span></span><br><span class="line">if [ $&#123;#str1&#125; -eq $&#123;#str2&#125; ]; then</span><br><span class="line">    echo &quot;字符串长度相等&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;字符串长度不相等&quot;</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检查字符串是否为空</span></span><br><span class="line">if [ -z &quot;$str1&quot; ]; then</span><br><span class="line">    echo &quot;字符串为空&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;字符串不为空&quot;</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检查字符串是否非空</span></span><br><span class="line">if [ -n &quot;$str1&quot; ]; then</span><br><span class="line">    echo &quot;字符串不为空&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;字符串为空&quot;</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检查字符串是否以特定前缀开始</span></span><br><span class="line">prefix=&quot;He&quot;</span><br><span class="line">if [ &quot;$&#123;str1#$prefix&#125;&quot; != &quot;$str1&quot; ]; then</span><br><span class="line">    echo &quot;字符串以 $prefix 开始&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;字符串不以 $prefix 开始&quot;</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检查字符串是否以特定后缀结束</span></span><br><span class="line">suffix=&quot;lo&quot;</span><br><span class="line">if [ &quot;$&#123;str1%$suffix&#125;&quot; != &quot;$str1&quot; ]; then</span><br><span class="line">    echo &quot;字符串以 $suffix 结束&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;字符串不以 $suffix 结束&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h2 id="复合条件测试"><a href="#复合条件测试" class="headerlink" title="复合条件测试"></a>复合条件测试</h2><h3 id="AND-操作符（-）"><a href="#AND-操作符（-）" class="headerlink" title="AND 操作符（&amp;&amp;）"></a>AND 操作符（&amp;&amp;）</h3><p><strong>语法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[ condition1 ] &amp;&amp; [ condition2 ]</span><br></pre></td></tr></table></figure>
+
+<p>AND 操作符用于在两个条件都为真时返回真。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义两个变量</span></span><br><span class="line">num1=5</span><br><span class="line">num2=10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果 num1 大于 0 并且 num2 大于 0，则输出消息</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$num1</span> -gt 0 ] &amp;&amp; [ <span class="variable">$num2</span> -gt 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Both numbers are greater than 0.&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;At least one number is not greater than 0.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="OR-操作符（-）"><a href="#OR-操作符（-）" class="headerlink" title="OR 操作符（||）"></a>OR 操作符（||）</h3><p><strong>语法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[ condition1 ] || [ condition2 ]</span><br></pre></td></tr></table></figure>
+
+<p>OR 操作符用于在两个条件中至少有一个为真时返回真。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义两个变量</span></span><br><span class="line">num1=5</span><br><span class="line">num2=10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果 num1 大于 0 或者 num2 大于 0，则输出消息</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$num1</span> -gt 0 ] || [ <span class="variable">$num2</span> -gt 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;At least one number is greater than 0.&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Both numbers are not greater than 0.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.myhappiness.top">Mr wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.myhappiness.top/2024/04/19/Shell%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95/">https://blog.myhappiness.top/2024/04/19/Shell%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.myhappiness.top" target="_blank">12零9</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://img.myhappiness.top/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/04/19/Shell%E8%84%9A%E6%9C%AC%E5%8F%98%E9%87%8F/" title="变量"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">变量</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/19/Centos-install-python3/" title="Centos安装python3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-19</div><div class="title">Centos安装python3</div></div></a></div><div><a href="/2024/03/14/Change-root-password/" title="Centos7破解root密码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-14</div><div class="title">Centos7破解root密码</div></div></a></div><div><a href="/2024/02/09/Hexo-install/" title="Hexo部署"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-09</div><div class="title">Hexo部署</div></div></a></div><div><a href="/2024/04/18/Linux%E7%BD%91%E5%8D%A1%E7%BB%91%E5%AE%9A/" title="Linux网卡绑定"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-18</div><div class="title">Linux网卡绑定</div></div></a></div><div><a href="/2024/04/19/Shell%E8%84%9A%E6%9C%AC%E5%8F%98%E9%87%8F/" title="变量"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-19</div><div class="title">变量</div></div></a></div><div><a href="/2024/03/07/change-confluence-admin-password/" title="重置Confluence管理员密码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-07</div><div class="title">重置Confluence管理员密码</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://img.myhappiness.top/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr wang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-number">1.</span> <span class="toc-text">Shell条件测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83"><span class="toc-number">2.</span> <span class="toc-text">文件比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83"><span class="toc-number">3.</span> <span class="toc-text">数值比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83"><span class="toc-number">4.</span> <span class="toc-text">字符串比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-number">5.</span> <span class="toc-text">复合条件测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AND-%E6%93%8D%E4%BD%9C%E7%AC%A6%EF%BC%88-%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">AND 操作符（&amp;&amp;）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OR-%E6%93%8D%E4%BD%9C%E7%AC%A6%EF%BC%88-%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">OR 操作符（||）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/19/Shell%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95/" title="Shell条件测试">Shell条件测试</a><time datetime="2024-04-19T07:02:30.000Z" title="发表于 2024-04-19 15:02:30">2024-04-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/19/Shell%E8%84%9A%E6%9C%AC%E5%8F%98%E9%87%8F/" title="变量">变量</a><time datetime="2024-04-19T03:39:20.000Z" title="发表于 2024-04-19 11:39:20">2024-04-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/18/Python_if%E8%AF%AD%E5%8F%A5/" title="分支语句">分支语句</a><time datetime="2024-04-18T07:46:39.000Z" title="发表于 2024-04-18 15:46:39">2024-04-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/18/Linux%E7%BD%91%E5%8D%A1%E7%BB%91%E5%AE%9A/" title="Linux网卡绑定">Linux网卡绑定</a><time datetime="2024-04-18T06:21:16.000Z" title="发表于 2024-04-18 14:21:16">2024-04-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/17/Python_%E5%88%97%E8%A1%A8/" title="列表">列表</a><time datetime="2024-04-17T09:37:39.000Z" title="发表于 2024-04-17 17:37:39">2024-04-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Mr wang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
