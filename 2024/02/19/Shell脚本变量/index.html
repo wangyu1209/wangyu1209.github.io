@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>变量 | 12零9</title><meta name="author" content="Mr wang"><meta name="copyright" content="Mr wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="变量的定义在Shell脚本中，变量就像是小箱子，你可以给这个箱子起一个名字，然后把需要存储的东西放进去。当你需要使用这个东西时，只需告诉计算机箱子的名字，它就会把里面的东西取出来给你使用。就像在玩一个魔术盒子一样，你把需要的东西放进去，需要的时候再取出来使用。这样，你可以方便地在脚本中存储数据，并在需要的时候使用这些数据。 变量的常见类型Shell变量分为以下几类  自定义变量 系统环境变量 位置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变量">
+<meta property="og:url" content="https://blog.myhappiness.top/2024/02/19/Shell%E8%84%9A%E6%9C%AC%E5%8F%98%E9%87%8F/index.html">
+<meta property="og:site_name" content="12零9">
+<meta property="og:description" content="变量的定义在Shell脚本中，变量就像是小箱子，你可以给这个箱子起一个名字，然后把需要存储的东西放进去。当你需要使用这个东西时，只需告诉计算机箱子的名字，它就会把里面的东西取出来给你使用。就像在玩一个魔术盒子一样，你把需要的东西放进去，需要的时候再取出来使用。这样，你可以方便地在脚本中存储数据，并在需要的时候使用这些数据。 变量的常见类型Shell变量分为以下几类  自定义变量 系统环境变量 位置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.myhappiness.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-02-19T12:53:39.000Z">
+<meta property="article:modified_time" content="2024-04-19T03:35:02.860Z">
+<meta property="article:author" content="Mr wang">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.myhappiness.top/img/avatar.jpg"><link rel="shortcut icon" href="https://img.myhappiness.top/img/favicon.png"><link rel="canonical" href="https://blog.myhappiness.top/2024/02/19/Shell%E8%84%9A%E6%9C%AC%E5%8F%98%E9%87%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '变量',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-19 11:35:02'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img.myhappiness.top/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="12零9"><span class="site-name">12零9</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">变量</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-19T12:53:39.000Z" title="发表于 2024-02-19 20:53:39">2024-02-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-19T03:35:02.860Z" title="更新于 2024-04-19 11:35:02">2024-04-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Shell/">Shell</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="变量"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h2><p>在Shell脚本中，变量就像是小箱子，你可以给这个箱子起一个名字，然后把需要存储的东西放进去。当你需要使用这个东西时，只需告诉计算机箱子的名字，它就会把里面的东西取出来给你使用。就像在玩一个魔术盒子一样，你把需要的东西放进去，需要的时候再取出来使用。这样，你可以方便地在脚本中存储数据，并在需要的时候使用这些数据。</p>
+<h2 id="变量的常见类型"><a href="#变量的常见类型" class="headerlink" title="变量的常见类型"></a>变量的常见类型</h2><p><code>Shell</code>变量分为以下几类</p>
+<ul>
+<li>自定义变量</li>
+<li>系统环境变量</li>
+<li>位置参数变量</li>
+<li>预定义变量</li>
+</ul>
+<p><strong>1.自定义变量</strong></p>
+<ol>
+<li>定义变量：通过 <code>变量名=变量值</code> 的方式可以定义自定义变量。</li>
+<li>引用变量：使用 <code>$变量名</code> 或 <code>$&#123;变量名&#125;</code> 的形式可以引用自定义变量的值。</li>
+<li>查看变量：可以使用 <code>echo $变量名</code> 来查看特定自定义变量的值。另外，使用 <code>set</code> 命令可以显示所有变量，包括自定义变量和环境变量。</li>
+<li>取消变量：要取消一个自定义变量，可以使用 <code>unset 变量名</code> 命令。这个操作的作用范围仅限于当前 shell。</li>
+<li>作用范围：自定义变量仅在当前 shell 中有效，不会被传递到子 shell。</li>
+</ol>
+<p><strong>2.系统环境变量</strong></p>
+<ol>
+<li>定义环境变量：通过使用命令 <code>export</code> 变量名，可以将自定义的变量转换成系统环境变量。</li>
+<li>引用环境变量：系统环境变量可以通过 <code>$变量名</code> 或 <code>$&#123;变量名&#125;</code> 的方式进行引用。</li>
+<li>查看环境变量：可以使用命令 <code>echo $变量名</code> 来查看特定环境变量的值，或者使用 <code>env | grep 变量名</code> 来列出包含特定字符串的所有环境变量。</li>
+<li>取消环境变量：要取消一个环境变量，可以使用 <code>unset 变量名</code> 命令。</li>
+<li>变量作用范围：系统环境变量在当前 shell 以及其子 shell 中都是有效的，但在其他 shell 中则可能无效。</li>
+</ol>
+<p><strong>3.位置参数变量</strong></p>
+<ol>
+<li>定义位置参数变量：在执行脚本或函数时，通过命令行传递参数给脚本或函数，这些参数会被自动赋值给位置参数变量，形如 <code>$1</code>, <code>$2</code>, <code>$3</code>, …，分别代表第一个、第二个、第三个位置的参数，以此类推。</li>
+<li>引用位置参数变量：使用 <code>$数字</code> 的形式引用位置参数变量的值，例如 <code>$1</code> 表示第一个位置的参数，<code>$2</code> 表示第二个位置的参数，以此类推。</li>
+<li>查看位置参数变量：通常不直接查看位置参数变量，而是在脚本或函数中通过 <code>$数字</code> 的方式来使用它们。</li>
+<li>作用范围：位置参数变量仅在当前执行的脚本或函数中有效，不会被传递到其他脚本或函数中。</li>
+<li>举例：假设有一个脚本 <code>example.sh</code>，执行命令 <code>./example.sh apple banana orange</code>，那么在 <code>example.sh</code> 中可以通过 <code>$1</code> 获取 <code>apple</code>，通过 <code>$2</code> 获取 <code>banana</code>，通过 <code>$3</code> 获取 <code>orange</code>，依此类推。</li>
+</ol>
+<p><strong>4.预定义变量</strong></p>
+<ol>
+<li><strong>$0</strong>：当前脚本的文件名。</li>
+<li><strong>$1, $2, … n</strong>：脚本或函数的参数。$1是第一个参数，$2是第二个参数，依此类推。</li>
+<li>**$@**：所有传递给脚本或函数的参数的列表。</li>
+<li>**$#**：传递给脚本或函数的参数个数。</li>
+<li>**$?**：上一个命令的退出状态或返回值。</li>
+<li>**$$**：当前Shell进程的进程ID（PID）。</li>
+<li>**$!**：后台运行的最后一个进程的进程ID。</li>
+<li><strong>$USER</strong>：当前用户的用户名。</li>
+<li><strong>$HOME</strong>：当前用户的主目录。</li>
+<li><strong>$PWD</strong>：当前工作目录的路径。</li>
+<li><strong>$SHELL</strong>：当前Shell的路径。</li>
+<li><strong>$RANDOM</strong>：一个随机数。</li>
+</ol>
+<p><strong>示例：</strong></p>
+<ol>
+<li><p><strong>$0</strong>：当前脚本的文件名。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;当前脚本的文件名是：<span class="variable">$0</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>$1, $2, … n</strong>：脚本或函数的参数。$1是第一个参数，$2是第二个参数，依此类推。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;第一个参数是：<span class="variable">$1</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;第二个参数是：<span class="variable">$2</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**$@**：所有传递给脚本或函数的参数的列表。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;所有参数：<span class="variable">$@</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**$#**：传递给脚本或函数的参数个数。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;参数个数：<span class="variable">$#</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**$?**：上一个命令的退出状态或返回值。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> non_existent_file</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;上一个命令的退出状态：$?&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**$$**：当前Shell进程的进程ID（PID）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;当前Shell进程的PID是：$$&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>**$!**：后台运行的最后一个进程的进程ID。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sleep</span> 10 &amp;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;后台运行的最后一个进程的PID是：$!&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>$USER</strong>：当前用户的用户名。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;当前用户的用户名是：<span class="variable">$USER</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>$HOME</strong>：当前用户的主目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;当前用户的主目录是：<span class="variable">$HOME</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>$PWD</strong>：当前工作目录的路径。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;当前工作目录的路径是：<span class="variable">$PWD</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>$SHELL</strong>：当前Shell的路径。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;当前Shell的路径是：<span class="variable">$SHELL</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>$RANDOM</strong>：一个随机数。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;一个随机数是：<span class="variable">$RANDOM</span>&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="变量赋值方式"><a href="#变量赋值方式" class="headerlink" title="变量赋值方式"></a>变量赋值方式</h2><p>在Shell编程中，可以使用以下方式对变量进行赋值：</p>
+<ol>
+<li><p><strong>直接赋值</strong>：使用等号（&#x3D;）进行赋值。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">variable_name=value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>间接赋值</strong>：使用双括号来间接引用变量。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">variable_name=<span class="string">&quot;indirect_variable&quot;</span></span><br><span class="line">indirect_variable=<span class="string">&quot;value&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;!variable_name&#125;</span>  <span class="comment"># 输出: value</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>命令赋值</strong>：将命令的输出结果赋值给变量。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">variable_name=$(<span class="built_in">command</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>将输出重定向到变量</strong>：将命令的输出结果直接重定向到变量。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">variable_name=`<span class="built_in">command</span>`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>声明变量并赋值</strong>：使用<code>declare</code>或<code>typeset</code>关键字声明变量并赋值。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">declare</span> variable_name=value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>读取用户输入并赋值</strong>：使用<code>read</code>命令从用户处读取输入并将其赋值给变量。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">read</span> variable_name</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">&quot;请输入您的姓名: &quot;</span> variable_name</span><br><span class="line"><span class="built_in">read</span> -t 5 -p <span class="string">&quot;请输入您的姓名（5秒内）: &quot;</span> variable_name</span><br><span class="line"><span class="built_in">read</span> -n 2 variable_name  <span class="comment">#读取2个字符</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>赋值给数组</strong>：将值赋给数组变量的特定索引。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">array_name[index]=value</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="引用变量"><a href="#引用变量" class="headerlink" title="引用变量"></a>引用变量</h2><p>在Shell中，使用双引号和单引号引用变量有一些区别：</p>
+<ol>
+<li><p><strong>双引号（” “）：</strong></p>
+<ul>
+<li>使用双引号引用变量时，变量会被扩展，即变量的值会被替换到引号内。例如：<code>var=&quot;Hello&quot;</code>，然后 <code>echo &quot;$var&quot;</code> 会输出 <code>Hello</code>。</li>
+<li>双引号内可以包含其他特殊字符（如空格、制表符等），它们不会被特殊处理，而是作为普通字符对待。</li>
+<li>双引号内的命令替换和算术扩展会被执行。例如：<code>echo &quot;Today is $(date)&quot;</code> 会输出当前日期。</li>
+</ul>
+</li>
+<li><p><strong>单引号（’ ‘）：</strong></p>
+<ul>
+<li>使用单引号引用变量时，变量不会被扩展，而是作为普通字符串对待。例如：<code>var=&quot;Hello&quot;</code>，然后 <code>echo &#39;$var&#39;</code> 会输出 <code>$var</code> 而不是 <code>Hello</code>。</li>
+<li>单引号内的特殊字符被视为普通字符，不会被特殊处理，包括 <code>$</code> 符号也会被当作普通字符对待。</li>
+<li>单引号内不允许执行命令替换和算术扩展。</li>
+</ul>
+</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var=<span class="string">&quot;Hello&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Double quotes: <span class="variable">$var</span>&quot;</span>   <span class="comment"># 输出: Double quotes: Hello</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;Single quotes: $var&#x27;</span>   <span class="comment"># 输出: Single quotes: $var</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="变量数值运算"><a href="#变量数值运算" class="headerlink" title="变量数值运算"></a>变量数值运算</h2><p>在Shell脚本中，你可以进行数值运算并将结果保存到变量中。一般来说，可以使用<code>expr</code>命令或者使用双括号<code>(( ))</code>进行数值计算。</p>
+<h3 id="使用expr命令："><a href="#使用expr命令：" class="headerlink" title="使用expr命令："></a>使用<code>expr</code>命令：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义变量</span></span><br><span class="line">num1=10</span><br><span class="line">num2=5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加法</span></span><br><span class="line"><span class="built_in">sum</span>=$(<span class="built_in">expr</span> <span class="variable">$num1</span> + <span class="variable">$num2</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Sum: <span class="variable">$sum</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 减法</span></span><br><span class="line">difference=$(<span class="built_in">expr</span> <span class="variable">$num1</span> - <span class="variable">$num2</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Difference: <span class="variable">$difference</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 乘法</span></span><br><span class="line">product=$(<span class="built_in">expr</span> <span class="variable">$num1</span> \* <span class="variable">$num2</span>)  <span class="comment"># 乘法需要使用反斜杠转义</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Product: <span class="variable">$product</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 除法</span></span><br><span class="line">quotient=$(<span class="built_in">expr</span> <span class="variable">$num1</span> / <span class="variable">$num2</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Quotient: <span class="variable">$quotient</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 求余</span></span><br><span class="line">remainder=$(<span class="built_in">expr</span> <span class="variable">$num1</span> % <span class="variable">$num2</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Remainder: <span class="variable">$remainder</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用双括号-："><a href="#使用双括号-：" class="headerlink" title="使用双括号(( ))："></a>使用双括号<code>(( ))</code>：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义变量</span></span><br><span class="line">num1=10</span><br><span class="line">num2=5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加法</span></span><br><span class="line"><span class="built_in">sum</span>=$((num1 + num2))</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Sum: <span class="variable">$sum</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 减法</span></span><br><span class="line">difference=$((num1 - num2))</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Difference: <span class="variable">$difference</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 乘法</span></span><br><span class="line">product=$((num1 * num2))</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Product: <span class="variable">$product</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 除法</span></span><br><span class="line">quotient=$((num1 / num2))</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Quotient: <span class="variable">$quotient</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 求余</span></span><br><span class="line">remainder=$((num1 % num2))</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Remainder: <span class="variable">$remainder</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意事项：</p>
+<ul>
+<li>在使用<code>expr</code>时，运算符周围需要有空格，而使用<code>(( ))</code>时不需要空格。</li>
+<li>对于乘法，使用<code>expr</code>时需要对<code>*</code>进行转义，而在<code>(( ))</code>中不需要。</li>
+<li><code>expr</code>只能处理整数运算，而<code>(( ))</code>可以处理浮点数运算。</li>
+<li>在进行除法时，如果除数为0，<code>expr</code>会报错，而<code>(( ))</code>会输出错误信息但不会终止脚本执行。</li>
+</ul>
+<h3 id="使用let命令"><a href="#使用let命令" class="headerlink" title="使用let命令:"></a>使用<code>let</code>命令:</h3><p>在Shell中，<code>let</code>命令通常用于执行整数运算。它允许你在Shell脚本中进行基本的算术运算，例如加法、减法、乘法和除法。下面是一些示例用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义变量并进行加法运算</span></span><br><span class="line"><span class="built_in">let</span> <span class="string">&quot;result = 5 + 3&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;5 + 3 = <span class="variable">$result</span>&quot;</span>  <span class="comment"># 输出：5 + 3 = 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义变量并进行减法运算</span></span><br><span class="line"><span class="built_in">let</span> <span class="string">&quot;result = 10 - 4&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;10 - 4 = <span class="variable">$result</span>&quot;</span>  <span class="comment"># 输出：10 - 4 = 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义变量并进行乘法运算</span></span><br><span class="line"><span class="built_in">let</span> <span class="string">&quot;result = 6 * 3&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;6 * 3 = <span class="variable">$result</span>&quot;</span>  <span class="comment"># 输出：6 * 3 = 18</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义变量并进行除法运算</span></span><br><span class="line"><span class="built_in">let</span> <span class="string">&quot;result = 20 / 4&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;20 / 4 = <span class="variable">$result</span>&quot;</span>  <span class="comment"># 输出：20 / 4 = 5</span></span><br></pre></td></tr></table></figure>
+
+<p>你还可以在<code>let</code>命令中使用变量，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义两个变量并进行加法运算</span></span><br><span class="line">a=10</span><br><span class="line">b=5</span><br><span class="line"><span class="built_in">let</span> <span class="string">&quot;result = a + b&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$a</span> + <span class="variable">$b</span> = <span class="variable">$result</span>&quot;</span>  <span class="comment"># 输出：10 + 5 = 15</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，在<code>let</code>命令中，变量名前不需要添加<code>$</code>符号。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.myhappiness.top">Mr wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.myhappiness.top/2024/02/19/Shell%E8%84%9A%E6%9C%AC%E5%8F%98%E9%87%8F/">https://blog.myhappiness.top/2024/02/19/Shell%E8%84%9A%E6%9C%AC%E5%8F%98%E9%87%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.myhappiness.top" target="_blank">12零9</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://img.myhappiness.top/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/19/Centos-install-python3/" title="Centos安装python3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Centos安装python3</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/09/Hexo-install/" title="Hexo部署"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo部署</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/19/Centos-install-python3/" title="Centos安装python3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-19</div><div class="title">Centos安装python3</div></div></a></div><div><a href="/2024/03/14/Change-root-password/" title="Centos7破解root密码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-14</div><div class="title">Centos7破解root密码</div></div></a></div><div><a href="/2024/02/09/Hexo-install/" title="Hexo部署"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-09</div><div class="title">Hexo部署</div></div></a></div><div><a href="/2024/04/18/Linux%E7%BD%91%E5%8D%A1%E7%BB%91%E5%AE%9A/" title="Linux网卡绑定"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-18</div><div class="title">Linux网卡绑定</div></div></a></div><div><a href="/2024/03/07/change-confluence-admin-password/" title="重置Confluence管理员密码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-07</div><div class="title">重置Confluence管理员密码</div></div></a></div><div><a href="/2024/03/07/confluence-Backup-and-Recovery/" title="Confluence备份恢复"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-07</div><div class="title">Confluence备份恢复</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://img.myhappiness.top/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr wang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">变量的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">变量的常见类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">变量赋值方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">引用变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97"><span class="toc-number">5.</span> <span class="toc-text">变量数值运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8expr%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-number">5.1.</span> <span class="toc-text">使用expr命令：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%8C%E6%8B%AC%E5%8F%B7-%EF%BC%9A"><span class="toc-number">5.2.</span> <span class="toc-text">使用双括号(( ))：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8let%E5%91%BD%E4%BB%A4"><span class="toc-number">5.3.</span> <span class="toc-text">使用let命令:</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/18/Python_if%E8%AF%AD%E5%8F%A5/" title="分支语句">分支语句</a><time datetime="2024-04-18T07:46:39.000Z" title="发表于 2024-04-18 15:46:39">2024-04-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/18/Linux%E7%BD%91%E5%8D%A1%E7%BB%91%E5%AE%9A/" title="Linux网卡绑定">Linux网卡绑定</a><time datetime="2024-04-18T06:21:16.000Z" title="发表于 2024-04-18 14:21:16">2024-04-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/17/Python_%E5%88%97%E8%A1%A8/" title="列表">列表</a><time datetime="2024-04-17T09:37:39.000Z" title="发表于 2024-04-17 17:37:39">2024-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/17/Python_%E5%8F%98%E9%87%8F/" title="变量">变量</a><time datetime="2024-04-17T09:37:39.000Z" title="发表于 2024-04-17 17:37:39">2024-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/17/Python_%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="字符串">字符串</a><time datetime="2024-04-17T09:37:39.000Z" title="发表于 2024-04-17 17:37:39">2024-04-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Mr wang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
