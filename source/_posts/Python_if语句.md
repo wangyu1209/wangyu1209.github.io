@@ -6,7 +6,7 @@ date: 2024-04-18 15:46:39
 tags:
     - Python
 categories:
-    - Python
+    - Python基础语法
 ---
 # 分支语句
 

@@ -6,7 +6,7 @@ date: 2024-04-17 17:37:39
 tags:
     - Python
 categories:
-    - Python
+    - Python基础语法
 ---
 ## 列表
 

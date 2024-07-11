@@ -6,7 +6,7 @@ date: 2024-04-19 15:02:30
 tags:
     - Linux
 categories:
-    - Shell
+    - Shell脚本基础语法
 ---
 ## Shell条件测试
 

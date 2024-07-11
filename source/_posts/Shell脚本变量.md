@@ -6,7 +6,7 @@ date: 2024-04-19 11:39:20
 tags:
     - Linux
 categories:
-    - Shell
+    - Shell脚本基础语法
 ---
 ## 变量的定义
 

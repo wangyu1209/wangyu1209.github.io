@@ -1,14 +1,13 @@
 ---
 title: Hexo备份及恢复
 copyrighr: true
-date: 2024-04-01 22:50:49
+date: 2024-07-12 02:21:21
 tags:
-  - Centos
-  - Linux
-  - Mysql
+    - Linux
 categories:
- - 常用服务安装
+    - 常用服务安装
 ---
+
 ## hexo备份
 
 1.进入博客根目录执行
@@ -65,6 +64,13 @@ git push -u gitee hexo:master
 
 ## hexo恢复
 
+安装git和node.js
+
+```
+npm install -g cnpm
+cnpm install -g hexo-cli
+```
+
 clone备份仓库的代码到本地
 
 ```
@@ -75,7 +81,10 @@ clone原博客内容
 
 ```
 cd /hexo/blog/
+npm install
 git clone  git@github.com:xxxxx/xxxxx.github.io.git .deploy_git
+git config --global user.name "github用户名"
+git config --global user.email "github邮箱"
 ```
 
 正常更新博客
