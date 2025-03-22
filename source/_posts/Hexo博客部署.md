@@ -154,7 +154,7 @@ deploy:
 
    添加域名解析记录CNAME记录值：`USERNAME.github.io`
 
-4. 在储存库中前往 **Settings** > **Pages** >**Custom domain**填写自定义域名，根据需求勾选**Enforce HTTPS **开启强制https启动
+4. 在储存库中前往 **Settings** > **Pages** >**Custom domain**填写自定义域名，根据需求勾选**Enforce HTTPS**开启强制https启动
 
 5. **发布文章到github上**
 
