@@ -104,4 +104,4 @@ deploy:
   type: git
   repo: git@github.com:wangyu1209/wangyu1209.github.io.git
   branch: main
-  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+  message: "hexo_deploy_2026-06-16"
