@@ -1,12 +1,12 @@
 ---
-title: Centos7部署禅道.md
+title: Centos7部署禅道
 copyrighr: true
-date: 2026-06-16 17:42:06
+date: 2026-06-17 09:56:53
 tags:
   - Centos
   - Linux
 categories:
-  - 常用服务部署
+  - 常用服务安装
 ---
 
 ## Centos7.6系统下安装httpd，mariadb，php7.2环境运行禅道
