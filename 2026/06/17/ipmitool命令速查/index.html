@@ -1,0 +1,874 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ipmitool命令速查 | 12零9</title><meta name="author" content="Mr wang"><meta name="copyright" content="Mr wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ipmitool 命令速查表(适用于 Linux、Windows（Cygwin&#x2F;WSL）和 macOS)    常用选项    -I &lt;interface&gt;   – 接口类型 (open, lan, lanplus, serial, imb)   -H &lt;host&gt;        – 目标 BMC IP（远程）   -U &lt;user&gt;        –">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ipmitool命令速查">
+<meta property="og:url" content="https://blog.myhappiness.top/2026/06/17/ipmitool%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/index.html">
+<meta property="og:site_name" content="12零9">
+<meta property="og:description" content="ipmitool 命令速查表(适用于 Linux、Windows（Cygwin&#x2F;WSL）和 macOS)    常用选项    -I &lt;interface&gt;   – 接口类型 (open, lan, lanplus, serial, imb)   -H &lt;host&gt;        – 目标 BMC IP（远程）   -U &lt;user&gt;        –">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.myhappiness.top/img/avatar.jpg">
+<meta property="article:published_time" content="2026-06-17T03:07:58.000Z">
+<meta property="article:modified_time" content="2026-06-26T09:07:55.696Z">
+<meta property="article:author" content="Mr wang">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.myhappiness.top/img/avatar.jpg"><link rel="shortcut icon" href="https://img.myhappiness.top/img/favicon.png"><link rel="canonical" href="https://blog.myhappiness.top/2026/06/17/ipmitool%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/index.html"><link rel="preconnect" href="https://cdn.bootcdn.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.32/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.bootcdn.net/ajax/libs/egjs-infinitegrid/4.11.0/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ipmitool命令速查',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-06-26 17:07:55'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img.myhappiness.top/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="12零9"><span class="site-name">12零9</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">ipmitool命令速查</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-17T03:07:58.000Z" title="发表于 2026-06-17 11:07:58">2026-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-26T09:07:55.696Z" title="更新于 2026-06-26 17:07:55">2026-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7/">常用命令工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ipmitool命令速查"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="ipmitool-命令速查表"><a href="#ipmitool-命令速查表" class="headerlink" title="ipmitool 命令速查表"></a><strong>ipmitool 命令速查表</strong></h1><p><em>(适用于 Linux、Windows（Cygwin&#x2F;WSL）和 macOS)</em>  </p>
+<blockquote>
+<p><strong>常用选项</strong>  </p>
+<ul>
+<li><code>-I &lt;interface&gt;</code>   – 接口类型 (<code>open</code>, <code>lan</code>, <code>lanplus</code>, <code>serial</code>, <code>imb</code>)  </li>
+<li><code>-H &lt;host&gt;</code>        – 目标 BMC IP（远程）  </li>
+<li><code>-U &lt;user&gt;</code>        – 用户名（远程）  </li>
+<li><code>-P &lt;passwd&gt;</code>      – 密码（远程）  </li>
+<li><code>-L &lt;priv&gt;</code>        – 权限级别 (<code>admin</code>, <code>user</code>, <code>operator</code>)  </li>
+<li><code>-f &lt;file&gt;</code>        – 从文件读取参数  </li>
+<li><code>-c</code>               – 生成 CSV 输出（适用于 <code>sensor</code>、<code>fru</code>）</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><strong>会话 &#x2F; 连接</strong>  </li>
+<li><strong>系统 (System) 命令</strong>  </li>
+<li><strong>传感器 (Sensor) 命令</strong>  </li>
+<li><strong>事件日志 (Event Log)</strong>  </li>
+<li><strong>电源控制 (Power Control)</strong>  </li>
+<li><strong>SOL &#x2F; Serial‑Over‑Lan</strong>  </li>
+<li><strong>用户 &#x2F; 权限 (User &#x2F; Privilege)</strong>  </li>
+<li><strong>FRU &#x2F; 硬件信息</strong>  </li>
+<li><strong>LAN &#x2F; 网络</strong>  </li>
+<li><strong>Chassis &#x2F; 机箱</strong>  </li>
+<li><strong>Boot &#x2F; 启动</strong>  </li>
+<li><strong>Raw 命令</strong>  </li>
+<li><strong>Debug &#x2F; 其他</strong></li>
+</ol>
+<hr>
+<h2 id="1️⃣-会话-连接"><a href="#1️⃣-会话-连接" class="headerlink" title="1️⃣ 会话 &#x2F; 连接"></a>1️⃣ 会话 &#x2F; 连接</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool -I &lt;interface&gt; -H &lt;host&gt; -U &lt;user&gt; -P &lt;passwd&gt; &lt;command&gt;</code></td>
+<td>完整远程调用模式</td>
+</tr>
+<tr>
+<td><code>ipmitool -I open &lt;command&gt;</code></td>
+<td>本地（直接访问 BMC）</td>
+</tr>
+<tr>
+<td><code>ipmitool -I lanplus -L &lt;priv&gt; &lt;command&gt;</code></td>
+<td>通过 LAN+（默认）</td>
+</tr>
+<tr>
+<td><code>ipmitool -I serial &lt;command&gt;</code></td>
+<td>使用串行线路 (KCS &#x2F; Serial)</td>
+</tr>
+<tr>
+<td><code>ipmitool -I imb &lt;command&gt;</code></td>
+<td>使用 Intel IMB（特定平台）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2️⃣-系统-System-命令"><a href="#2️⃣-系统-System-命令" class="headerlink" title="2️⃣ 系统 (System) 命令"></a>2️⃣ 系统 (System) 命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool chassis status</code></td>
+<td>查看机箱状态（电源、风扇、温度）</td>
+</tr>
+<tr>
+<td><code>ipmitool mc info</code></td>
+<td>BMC（MC）基本信息</td>
+</tr>
+<tr>
+<td><code>ipmitool mc reset warm</code></td>
+<td><strong>软</strong> 重启 BMC（warm）</td>
+</tr>
+<tr>
+<td><code>ipmitool mc reset cold</code></td>
+<td><strong>硬</strong> 重启 BMC（cold）</td>
+</tr>
+<tr>
+<td><code>ipmitool sdr list</code></td>
+<td>列出所有传感器（Sensor Data Repository）</td>
+</tr>
+<tr>
+<td><code>ipmitool sensor list</code></td>
+<td>同上（简写）</td>
+</tr>
+<tr>
+<td><code>ipmitool sel info</code></td>
+<td>SEL（系统事件日志）概要</td>
+</tr>
+<tr>
+<td><code>ipmitool sel list</code></td>
+<td>列出全部 SEL 条目</td>
+</tr>
+<tr>
+<td><code>ipmitool sel clear</code></td>
+<td>清除 SEL</td>
+</tr>
+<tr>
+<td><code>ipmitool sel get &lt;id&gt;</code></td>
+<td>按 ID 查看单条 SEL</td>
+</tr>
+<tr>
+<td><code>ipmitool event &lt;command&gt;</code></td>
+<td>事件&#x2F;日志相关（兼容旧版）</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis identify [&lt;seconds&gt;]</code></td>
+<td>让机箱指示灯闪烁（定位）</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis bootdev &lt;dev&gt; [options]</code></td>
+<td>设定下次启动设备（e.g., <code>pxe</code>, <code>disk</code>, <code>cdrom</code>)</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis bootparam get 5</code></td>
+<td>查看当前 boot 参数（5&#x3D;bootdev）</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power status</code></td>
+<td>查询电源状态</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power on</code></td>
+<td>开机</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power off</code></td>
+<td>关机（软）</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power cycle</code></td>
+<td>重启（软）</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power reset</code></td>
+<td>强制硬重启（等同于 <code>mc reset cold</code>）</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power diag</code></td>
+<td>诊断测试（平台依赖）</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis policy list</code></td>
+<td>列出电源&#x2F;风扇策略</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis policy set &lt;policy&gt;</code></td>
+<td>设置电源&#x2F;风扇策略</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis control &lt;command&gt;</code></td>
+<td>发送原始控制命令（如 <code>poweron</code>, <code>poweroff</code>)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3️⃣-传感器-Sensor-命令"><a href="#3️⃣-传感器-Sensor-命令" class="headerlink" title="3️⃣ 传感器 (Sensor) 命令"></a>3️⃣ 传感器 (Sensor) 命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool sensor</code></td>
+<td>列出所有传感器（默认）</td>
+</tr>
+<tr>
+<td><code>ipmitool sensor get &lt;id&gt;</code></td>
+<td>读取单个传感器值</td>
+</tr>
+<tr>
+<td><code>ipmittool sensor reading &lt;id&gt;</code></td>
+<td>同上（简写）</td>
+</tr>
+<tr>
+<td><code>ipmitool sensor list</code></td>
+<td>同 <code>sensor</code></td>
+</tr>
+<tr>
+<td><code>ipmitool sensor thresh &lt;id&gt; lower/upper &lt;value&gt;</code></td>
+<td>设置阈值</td>
+</tr>
+<tr>
+<td>&#96;ipmitool sensor reading <id></td>
+<td>grep -i critical&#96;</td>
+</tr>
+<tr>
+<td><code>ipmitool sensor type &lt;type&gt;</code></td>
+<td>列出某类传感器（<code>temperature</code>, <code>voltage</code>, <code>fan</code>, …）</td>
+</tr>
+<tr>
+<td><code>ipmitool sdr elist all</code></td>
+<td>以可读格式列出所有 SDR（含描述）</td>
+</tr>
+<tr>
+<td><code>ipmitool sdr get &lt;id&gt;</code></td>
+<td>读取单条 SDR 条目</td>
+</tr>
+<tr>
+<td><code>ipmitool sdr dump &lt;file&gt;</code></td>
+<td>保存完整 SDR 记录到文件</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4️⃣-事件日志-SEL-–-System-Event-Log"><a href="#4️⃣-事件日志-SEL-–-System-Event-Log" class="headerlink" title="4️⃣ 事件日志 (SEL – System Event Log)"></a>4️⃣ 事件日志 (SEL – System Event Log)</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool sel list</code></td>
+<td>列出所有事件</td>
+</tr>
+<tr>
+<td><code>ipmitool sel info</code></td>
+<td>SEL 概要信息</td>
+</tr>
+<tr>
+<td><code>ipmitool sel get &lt;id&gt;</code></td>
+<td>查看单条事件</td>
+</tr>
+<tr>
+<td><code>ipmitool sel clear</code></td>
+<td>清空 SEL</td>
+</tr>
+<tr>
+<td><code>ipmitool sel erase</code></td>
+<td>彻底擦除（硬）</td>
+</tr>
+<tr>
+<td><code>ipmitool sel elist</code></td>
+<td>友好（expanded）格式</td>
+</tr>
+<tr>
+<td><code>ipmitool sel add &quot;xxxx&quot;</code></td>
+<td>手动添加事件（调试）</td>
+</tr>
+<tr>
+<td><code>ipmitool sel time get</code></td>
+<td>读取 BMC 当前时间</td>
+</tr>
+<tr>
+<td><code>ipmitool sel time set &quot;&lt;YYYY-MM-DD HH:MM:SS&gt;&quot;</code></td>
+<td>设置 BMC 时间（影响 SEL 时间戳）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="5️⃣-电源控制-Power-Control"><a href="#5️⃣-电源控制-Power-Control" class="headerlink" title="5️⃣ 电源控制 (Power Control)"></a>5️⃣ 电源控制 (Power Control)</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool chassis power status</code></td>
+<td>查看当前电源状态</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power on</code></td>
+<td>开机</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power off</code></td>
+<td>软关机</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power cycle</code></td>
+<td>软重启</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power reset</code></td>
+<td>硬重启（相当于 <code>mc reset cold</code>）</td>
+</tr>
+<tr>
+<td><code>ipmittool chassis bootdev &lt;dev&gt; [options]</code></td>
+<td>设定一次性启动设备（&#96;pxe</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis bootparam get &lt;id&gt;</code></td>
+<td>获取 boot 参数（<code>id</code> 1‑5）</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis bootparam set &lt;id&gt; &lt;value&gt;</code></td>
+<td>设置 boot 参数</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis policy list</code></td>
+<td>查看功率&#x2F;风扇策略</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis policy set &lt;policy&gt;</code></td>
+<td>设置策略</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="6️⃣-SOL-Serial‑Over‑Lan"><a href="#6️⃣-SOL-Serial‑Over‑Lan" class="headerlink" title="6️⃣ SOL &#x2F; Serial‑Over‑Lan"></a>6️⃣ SOL &#x2F; Serial‑Over‑Lan</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool sol activate</code></td>
+<td>启动 SOL 会话（进入交互式终端）</td>
+</tr>
+<tr>
+<td><code>ipmitool sol deactivate</code></td>
+<td>关闭 SOL 会话</td>
+</tr>
+<tr>
+<td><code>ipmitool sol info</code></td>
+<td>查看 SOL 配置</td>
+</tr>
+<tr>
+<td><code>ipmitool sol set &lt;parameter&gt; &lt;value&gt;</code></td>
+<td>设置 SOL 参数（如 <code>payload</code>, <code>character</code>, <code>escape</code>)</td>
+</tr>
+<tr>
+<td><code>ipmitool sol stats</code></td>
+<td>显示 SOL 统计信息</td>
+</tr>
+<tr>
+<td><code>ipmitool sol break</code></td>
+<td>发送中断（Ctrl‑]）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="7️⃣-用户-权限-User-Management"><a href="#7️⃣-用户-权限-User-Management" class="headerlink" title="7️⃣ 用户 &#x2F; 权限 (User Management)"></a>7️⃣ 用户 &#x2F; 权限 (User Management)</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool user list &lt;channel&gt;</code></td>
+<td>列出指定通道的全部用户</td>
+</tr>
+<tr>
+<td><code>ipmitool user set name &lt;id&gt; &lt;username&gt;</code></td>
+<td>为用户 ID 设定用户名</td>
+</tr>
+<tr>
+<td><code>ipmittool user set password &lt;id&gt; &lt;password&gt;</code></td>
+<td>为用户 ID 设定密码</td>
+</tr>
+<tr>
+<td><code>ipmitool user set privilege &lt;id&gt; &lt;priv&gt;</code></td>
+<td>设置权限 (<code>4=ADMIN</code>, <code>2=OPERATOR</code>, <code>1=USER</code>)</td>
+</tr>
+<tr>
+<td><code>ipmitool user enable &lt;id&gt;</code></td>
+<td>启用用户</td>
+</tr>
+<tr>
+<td><code>ipmitool user disable &lt;id&gt;</code></td>
+<td>禁用用户</td>
+</tr>
+<tr>
+<td><code>ipmitool user test &lt;id&gt;</code></td>
+<td>测试用户登录</td>
+</tr>
+<tr>
+<td><code>ipmitool user set password &lt;id&gt; &lt;newpasswd&gt;</code> (remote)</td>
+<td>远程修改密码</td>
+</tr>
+<tr>
+<td><code>ipmitool channel setaccess &lt;channel&gt; &lt;id&gt; &lt;priv&gt;</code></td>
+<td>调整通道访问级别</td>
+</tr>
+<tr>
+<td><code>ipmitool channel info &lt;channel&gt;</code></td>
+<td>查询通道信息（包括默认用户名&#x2F;密码）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="8️⃣-FRU-硬件信息-Field-Replaceable-Unit"><a href="#8️⃣-FRU-硬件信息-Field-Replaceable-Unit" class="headerlink" title="8️⃣ FRU &#x2F; 硬件信息 (Field Replaceable Unit)"></a>8️⃣ FRU &#x2F; 硬件信息 (Field Replaceable Unit)</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool fru</code></td>
+<td>列出全部 FRU 记录</td>
+</tr>
+<tr>
+<td><code>ipmitool fru print &lt;id&gt;</code></td>
+<td>打印单个 FRU（默认 0）</td>
+</tr>
+<tr>
+<td><code>ipmittool fru print -v &lt;id&gt;</code></td>
+<td>详细模式</td>
+</tr>
+<tr>
+<td><code>ipmitool fru dump &lt;file&gt;</code></td>
+<td>将所有 FRU 数据保存到文件</td>
+</tr>
+<tr>
+<td><code>ipmittool fru edit &lt;id&gt;</code></td>
+<td>交互式编辑（仅限支持）</td>
+</tr>
+<tr>
+<td><code>ipmitool fru list</code></td>
+<td>同 <code>fru</code></td>
+</tr>
+<tr>
+<td><code>ipmitool fru read &lt;file&gt;</code></td>
+<td>从文件读取 FRU（用于上传）</td>
+</tr>
+<tr>
+<td><code>ipmitool fru write &lt;file&gt;</code></td>
+<td>将 FRU 写回 BMC</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="8️⃣-LAN-网络-LAN-Configuration"><a href="#8️⃣-LAN-网络-LAN-Configuration" class="headerlink" title="8️⃣ LAN &#x2F; 网络 (LAN Configuration)"></a>8️⃣ LAN &#x2F; 网络 (LAN Configuration)</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool lan print &lt;channel&gt;</code></td>
+<td>查看 LAN 配置（IP、子网、网关)</td>
+</tr>
+<tr>
+<td><code>ipmitool lan set &lt;channel&gt; ipsrc &lt;source&gt;</code></td>
+<td>IP 源 (&#96;static</td>
+</tr>
+<tr>
+<td><code>ipmitool lan set &lt;channel&gt; ipaddr &lt;addr&gt;</code></td>
+<td>设置 IP 地址</td>
+</tr>
+<tr>
+<td><code>ipmittool lan set &lt;channel&gt; netmask &lt;mask&gt;</code></td>
+<td>设置子网掩码</td>
+</tr>
+<tr>
+<td><code>ipmittool lan set &lt;channel&gt; defgw ipaddr &lt;gw&gt;</code></td>
+<td>设置默认网关</td>
+</tr>
+<tr>
+<td><code>ipmittool lan set &lt;channel&gt; defgw macaddr &lt;mac&gt;</code></td>
+<td>设置默认网关的 MAC</td>
+</tr>
+<tr>
+<td><code>ipmitool lan set &lt;channel&gt; password &lt;pwd&gt;</code></td>
+<td>设置 LAN 通道的密码（不常用）</td>
+</tr>
+<tr>
+<td><code>ipmittool lan set &lt;channel&gt; vlan id &lt;vlan&gt;</code></td>
+<td>设定 VLAN ID</td>
+</tr>
+<tr>
+<td><code>ipmittool lan set &lt;channel&gt; vlan priority &lt;prio&gt;</code></td>
+<td>设定 VLAN 优先级</td>
+</tr>
+<tr>
+<td><code>ipmittool lan set &lt;channel&gt; macaddr &lt;mac&gt;</code></td>
+<td>手工指定 BMC MAC</td>
+</tr>
+<tr>
+<td>&#96;ipmittool lan set <channel> arp respond &lt;on</td>
+<td>off&gt;&#96;</td>
+</tr>
+<tr>
+<td>&#96;ipmittool lan set <channel> arp generate &lt;on</td>
+<td>off&gt;&#96;</td>
+</tr>
+<tr>
+<td><code>ipmittool lan set &lt;channel&gt; bmckey &lt;key&gt;</code></td>
+<td>设置 RMCP+ BMC 密钥</td>
+</tr>
+<tr>
+<td><code>ipmittool lan set &lt;channel&gt; authpw &lt;pw&gt;</code></td>
+<td>设置 LAN 通道的认证密码</td>
+</tr>
+<tr>
+<td><code>ipmittool lan set &lt;channel&gt; privilege &lt;priv&gt;</code></td>
+<td>设置远程访问的默认特权</td>
+</tr>
+<tr>
+<td><code>ipmitool lan stats get</code></td>
+<td>查看 LAN 统计（TX&#x2F;RX 包数）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="8️⃣-机箱-Chassis-命令"><a href="#8️⃣-机箱-Chassis-命令" class="headerlink" title="8️⃣ 机箱 (Chassis) 命令"></a>8️⃣ 机箱 (Chassis) 命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool chassis status</code></td>
+<td>机箱状态（电源、风扇、温度）</td>
+</tr>
+<tr>
+<td><code>ipmittool chassis identify [&lt;seconds&gt;]</code></td>
+<td>指示灯闪烁（定位）</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis reset &lt;reset_type&gt;</code></td>
+<td>重置机箱（<code>cold</code>, <code>warm</code>, <code>diagnostic</code>)</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis power &lt;command&gt;</code></td>
+<td>与 <strong>5️⃣ 电源控制</strong> 相同，常用别名</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis bootdev &lt;dev&gt; [options]</code></td>
+<td>同 <strong>5️⃣</strong></td>
+</tr>
+<tr>
+<td><code>ipmitool chassis bootparam get &lt;id&gt;</code></td>
+<td>同 <strong>5️⃣</strong></td>
+</tr>
+<tr>
+<td><code>ipmittool chassis bootparam set &lt;id&gt; &lt;value&gt;</code></td>
+<td>同 <strong>5️⃣</strong></td>
+</tr>
+<tr>
+<td><code>ipmittool chassis policy list</code></td>
+<td>同 <strong>5️⃣</strong></td>
+</tr>
+<tr>
+<td><code>ipmittool chassis policy set &lt;policy&gt;</code></td>
+<td>同 <strong>5️⃣</strong></td>
+</tr>
+<tr>
+<td><code>ipmittool chassis control &lt;command&gt;</code></td>
+<td>原始机箱控制（如 <code>reset</code>, <code>diagnostic</code>)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="9️⃣-启动-Boot-命令"><a href="#9️⃣-启动-Boot-命令" class="headerlink" title="9️⃣ 启动 (Boot) 命令"></a>9️⃣ 启动 (Boot) 命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool chassis bootdev &lt;dev&gt; [options]</code></td>
+<td>一次性启动设备 (&#96;pxe</td>
+</tr>
+<tr>
+<td><code>ipmittool chassis bootparam get 5</code></td>
+<td>查看当前一次性 boot 设备</td>
+</tr>
+<tr>
+<td><code>ipmittool chassis bootparam set 5 &lt;dev&gt;</code></td>
+<td>设定一次性 boot 设备</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis bootparam get 4</code></td>
+<td>查看 boot options（<code>set-once</code>, <code>persistent</code>)</td>
+</tr>
+<tr>
+<td><code>ipmittool chassis bootparam set 4 &lt;value&gt;</code></td>
+<td>设定持久 boot 选项</td>
+</tr>
+<tr>
+<td><code>ipmittool chassis bootparam get 3</code></td>
+<td>查看 boot flags (e.g., <code>BIOS</code>, <code>OS</code>)</td>
+</tr>
+<tr>
+<td><code>ipmitool chassis bootparam set 3 &lt;value&gt;</code></td>
+<td>设定 boot flags</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🔟-原始-Raw-命令"><a href="#🔟-原始-Raw-命令" class="headerlink" title="🔟 原始 (Raw) 命令"></a>🔟 原始 (Raw) 命令</h2><blockquote>
+<p><strong>使用方法</strong>：<code>ipmitool raw &lt;netfn&gt; &lt;cmd&gt; [data …]</code>  </p>
+<ul>
+<li><code>netfn</code> 与 <code>cmd</code> 为十六进制（不带 <code>0x</code> 前缀）  </li>
+<li>适用于所有未在上表覆盖的厂商扩展命令</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool raw 0x06 0x01</code></td>
+<td>读取 <code>Get Device ID</code>（等价于 <code>mc info</code>)</td>
+</tr>
+<tr>
+<td><code>ipmitool raw 0x00 0x02 0x01</code></td>
+<td>重置 BMC（cold）</td>
+</tr>
+<tr>
+<td><code>ipmittool raw 0x04 0x2D 0xFF</code></td>
+<td>向 <code>Chassis Power Control</code> 发送自定义控制码</td>
+</tr>
+<tr>
+<td><code>ipmittool raw 0x2C 0x02 0xC0</code></td>
+<td>读取特定传感器的原始值</td>
+</tr>
+<tr>
+<td><code>ipmittool raw 0x30 0x0C 0x07</code></td>
+<td>设定 2‑FA (如果平台支持)</td>
+</tr>
+<tr>
+<td><code>ipmitool raw 0x2C 0x0E 0x01</code></td>
+<td>读取 <code>Boot Flags</code>（与 <code>chassis bootparam get</code> 等价）</td>
+</tr>
+<tr>
+<td><code>ipmitool raw 0x0C 0x02 0x00</code></td>
+<td>读取系统事件日志的头信息</td>
+</tr>
+<tr>
+<td><code>ipmittool raw 0x2E 0x10 0x01</code></td>
+<td>设置自定义 PWM（风扇）阈值（平台特定）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>技巧</strong>：  </p>
+<ul>
+<li>把 <code>raw</code> 命令保存到脚本后运行，可快速实现厂商特有功能  </li>
+<li>使用 <code>ipmitool -v</code>（verbose）可以看到完整的请求&#x2F;响应帧，方便调试</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="🛠️-调试-其他"><a href="#🛠️-调试-其他" class="headerlink" title="🛠️ 调试 &#x2F; 其他"></a>🛠️ 调试 &#x2F; 其他</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ipmitool -v &lt;command&gt;</code></td>
+<td>详细输出（包括请求&#x2F;响应）</td>
+</tr>
+<tr>
+<td><code>ipmitool -vvv &lt;command&gt;</code></td>
+<td>更高调试级别（仅在故障排查时使用）</td>
+</tr>
+<tr>
+<td><code>ipmitool -vvv -I lanplus ...</code></td>
+<td>查看 LAN+ 握手过程</td>
+</tr>
+<tr>
+<td><code>ipmitool -d &lt;debugfile&gt;</code></td>
+<td>把所有调试信息写入文件</td>
+</tr>
+<tr>
+<td><code>ipmitool version</code></td>
+<td>查看 ipmitool 本身的版本</td>
+</tr>
+<tr>
+<td><code>ipmitool help</code></td>
+<td>列出所有子命令（可配合 <code>grep</code> 过滤）</td>
+</tr>
+<tr>
+<td><code>ipmitool -c sensor list</code></td>
+<td>以 CSV 形式输出传感器，易于导入 Excel&#x2F;Sheets</td>
+</tr>
+<tr>
+<td><code>ipmittool -f &lt;file&gt; &lt;command&gt;</code></td>
+<td>从文件读取参数（比如批量创建用户）</td>
+</tr>
+<tr>
+<td><code>ipmittool -I &lt;iface&gt; -R &lt;retries&gt; -T &lt;timeout&gt;</code></td>
+<td>调整重试次数和超时时间（网络环境不佳时有用）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🎯-常用一行脚本示例"><a href="#🎯-常用一行脚本示例" class="headerlink" title="🎯 常用一行脚本示例"></a>🎯 常用一行脚本示例</h2><table>
+<thead>
+<tr>
+<th>目标</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>查询电源状态</strong></td>
+<td><code>ipmitool -I lanplus -H $BMC -U $USER -P $PASS chassis power status</code></td>
+</tr>
+<tr>
+<td><strong>软重启服务器</strong></td>
+<td><code>ipmitool -I lanplus -H $BMC -U $USER -P $PASS chassis power cycle</code></td>
+</tr>
+<tr>
+<td><strong>列出所有传感器（CSV）</strong></td>
+<td><code>ipmitool -I lanplus -H $BMC -U $USER -P $PASS -c sensor &gt; sensors.csv</code></td>
+</tr>
+<tr>
+<td><strong>一次性从 PXE 启动并重启</strong></td>
+<td><code>ipmitool -I lanplus -H $BMC -U $USER -P $PASS chassis bootdev pxe; ipmitool -I lanplus -H $BMC -U $USER -P $PASS chassis power reset</code></td>
+</tr>
+<tr>
+<td><strong>激活 SOL 会话（适配脚本）</strong></td>
+<td><code>ipmitool -I lanplus -H $BMC -U $USER -P $PASS sol activate</code></td>
+</tr>
+<tr>
+<td><strong>读取厂商自定义 FRU</strong></td>
+<td><code>ipmitool -I lanplus -H $BMC -U $USER -P $PASS raw 0x2E 0x10 0x00</code></td>
+</tr>
+</tbody></table>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.myhappiness.top">Mr wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.myhappiness.top/2026/06/17/ipmitool%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/">https://blog.myhappiness.top/2026/06/17/ipmitool%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.myhappiness.top" target="_blank">12零9</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://img.myhappiness.top/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/butterfly-extsrc/1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.bootcdn.net/ajax/libs/butterfly-extsrc/1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/06/17/%E7%BB%88%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="终端常用快捷键"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">终端常用快捷键</div></div></a></div><div class="next-post pull-right"><a href="/2026/06/17/Centos7%E9%83%A8%E7%BD%B2%E7%A6%85%E9%81%93/" title="Centos7部署禅道"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Centos7部署禅道</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/19/Centos-install-python3/" title="Centos安装python3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-19</div><div class="title">Centos安装python3</div></div></a></div><div><a href="/2026/06/17/Centos7%E9%83%A8%E7%BD%B2%E7%A6%85%E9%81%93/" title="Centos7部署禅道"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-17</div><div class="title">Centos7部署禅道</div></div></a></div><div><a href="/2024/03/13/Change-root-password/" title="Centos7破解root密码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-14</div><div class="title">Centos7破解root密码</div></div></a></div><div><a href="/2024/07/11/Hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" title="Hexo博客部署"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-12</div><div class="title">Hexo博客部署</div></div></a></div><div><a href="/2024/07/11/Hexo%E5%A4%87%E4%BB%BD%E5%8F%8A%E6%81%A2%E5%A4%8D/" title="Hexo备份及恢复"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-12</div><div class="title">Hexo备份及恢复</div></div></a></div><div><a href="/2024/04/18/Linux%E7%BD%91%E5%8D%A1%E7%BB%91%E5%AE%9A/" title="Linux网卡绑定"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-18</div><div class="title">Linux网卡绑定</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://img.myhappiness.top/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr wang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ipmitool-%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">ipmitool 命令速查表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E4%BC%9A%E8%AF%9D-%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text">1️⃣ 会话 &#x2F; 连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E7%B3%BB%E7%BB%9F-System-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.</span> <span class="toc-text">2️⃣ 系统 (System) 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%EF%B8%8F%E2%83%A3-%E4%BC%A0%E6%84%9F%E5%99%A8-Sensor-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.</span> <span class="toc-text">3️⃣ 传感器 (Sensor) 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%EF%B8%8F%E2%83%A3-%E4%BA%8B%E4%BB%B6%E6%97%A5%E5%BF%97-SEL-%E2%80%93-System-Event-Log"><span class="toc-number">1.5.</span> <span class="toc-text">4️⃣ 事件日志 (SEL – System Event Log)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%EF%B8%8F%E2%83%A3-%E7%94%B5%E6%BA%90%E6%8E%A7%E5%88%B6-Power-Control"><span class="toc-number">1.6.</span> <span class="toc-text">5️⃣ 电源控制 (Power Control)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%EF%B8%8F%E2%83%A3-SOL-Serial%E2%80%91Over%E2%80%91Lan"><span class="toc-number">1.7.</span> <span class="toc-text">6️⃣ SOL &#x2F; Serial‑Over‑Lan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%EF%B8%8F%E2%83%A3-%E7%94%A8%E6%88%B7-%E6%9D%83%E9%99%90-User-Management"><span class="toc-number">1.8.</span> <span class="toc-text">7️⃣ 用户 &#x2F; 权限 (User Management)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%EF%B8%8F%E2%83%A3-FRU-%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF-Field-Replaceable-Unit"><span class="toc-number">1.9.</span> <span class="toc-text">8️⃣ FRU &#x2F; 硬件信息 (Field Replaceable Unit)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%EF%B8%8F%E2%83%A3-LAN-%E7%BD%91%E7%BB%9C-LAN-Configuration"><span class="toc-number">1.10.</span> <span class="toc-text">8️⃣ LAN &#x2F; 网络 (LAN Configuration)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%EF%B8%8F%E2%83%A3-%E6%9C%BA%E7%AE%B1-Chassis-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.11.</span> <span class="toc-text">8️⃣ 机箱 (Chassis) 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%EF%B8%8F%E2%83%A3-%E5%90%AF%E5%8A%A8-Boot-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.12.</span> <span class="toc-text">9️⃣ 启动 (Boot) 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%9F-%E5%8E%9F%E5%A7%8B-Raw-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.13.</span> <span class="toc-text">🔟 原始 (Raw) 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E8%B0%83%E8%AF%95-%E5%85%B6%E4%BB%96"><span class="toc-number">1.14.</span> <span class="toc-text">🛠️ 调试 &#x2F; 其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E5%B8%B8%E7%94%A8%E4%B8%80%E8%A1%8C%E8%84%9A%E6%9C%AC%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.15.</span> <span class="toc-text">🎯 常用一行脚本示例</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/26/Nginx_Archive_passwd/" title="Nginx_Archive_passwd">Nginx_Archive_passwd</a><time datetime="2026-06-26T09:13:22.000Z" title="发表于 2026-06-26 17:13:22">2026-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/18/WSL%E6%8F%90%E7%A4%BA%E2%80%9C%E8%AF%B7%E6%B1%82%E7%9A%84%E6%93%8D%E4%BD%9C%E6%88%90%E5%8A%9F%EF%BC%8C%E7%9B%B4%E5%88%B0%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8%E7%B3%BB%E7%BB%9F%E5%89%8D%E6%9B%B4%E6%94%B9%E5%B0%86%E4%B8%8D%E4%BC%9A%E7%94%9F%E6%95%88/" title="WSL提示“请求的操作成功，直到重新启动系统前更改将不会生效">WSL提示“请求的操作成功，直到重新启动系统前更改将不会生效</a><time datetime="2026-06-18T02:47:46.000Z" title="发表于 2026-06-18 10:47:46">2026-06-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/17/%E7%BB%88%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="终端常用快捷键">终端常用快捷键</a><time datetime="2026-06-17T03:23:40.000Z" title="发表于 2026-06-17 11:23:40">2026-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/17/ipmitool%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/" title="ipmitool命令速查">ipmitool命令速查</a><time datetime="2026-06-17T03:07:58.000Z" title="发表于 2026-06-17 11:07:58">2026-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/17/Centos7%E9%83%A8%E7%BD%B2%E7%A6%85%E9%81%93/" title="Centos7部署禅道">Centos7部署禅道</a><time datetime="2026-06-17T01:56:53.000Z" title="发表于 2026-06-17 09:56:53">2026-06-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By Mr wang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.32/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
