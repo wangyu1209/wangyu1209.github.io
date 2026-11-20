@@ -1,14 +1,12 @@
 ---
 title: Git分支管理
 copyrighr: true
-date: 2026-06-15 17:23:13
+date: 2026-07-31 14:49:52
 tags:
-  - Gitcategories:
   - Git
 categories:
   - Git
 ---
-
 
 # 当前main是旧代码 → 旧代码打1.0版本 → 上传新代码覆盖main为最新版
 前提：本地当前在 `main` 分支，当前代码就是**你要归档成1.0的旧版本**，不存在名为`1.0`的旧标签
